@@ -30,6 +30,8 @@
 			--fg:      #d8cbb0;
 			--dim:     #7d7259;
 			--amber:   #ffb000;
+			--panel:   #16130e;
+			--border:  #3a3428;
 		}
 
 		* { box-sizing: border-box; }
@@ -84,14 +86,92 @@
 			border-bottom-color: transparent;
 			outline: none;
 		}
+
+		h2 {
+			font-size: 1.1rem;
+			font-weight: 600;
+			margin: 3.5rem 0 1.5rem;
+			padding-bottom: 0.6rem;
+			border-bottom: 1px solid var(--border);
+			color: var(--fg);
+		}
+		h2:first-child { margin-top: 0; }
+
+		ol {
+			padding-left: 1.4rem;
+			color: var(--dim);
+		}
+		li { margin: 0.6rem 0; }
+
+		code, pre {
+			font-family: ui-monospace, monospace;
+			font-size: 0.85rem;
+			color: var(--fg);
+		}
+		pre {
+			margin: 0.5rem 0 0;
+			padding: 0.7rem 0.9rem;
+			overflow-x: auto;
+			background: var(--panel);
+			border: 1px solid var(--border);
+		}
 	</style>
 </head>
 <body>
 	<main id="main-content">
 
+		<h2>Install the app</h2>
+
 		<p class="meta">
 			<a href="artemis.apk" download>artemis.apk</a> Android client
 		</p>
+
+		<ol>
+			<li>Download <code>artemis.apk</code> on an Android phone (Android 7 or newer) and open it.</li>
+			<li>Allow your browser to install unknown apps when Android asks.</li>
+			<li>In the app's server settings, enter the server URL, your callsign and your password.</li>
+		</ol>
+
+		<h2>Install the server</h2>
+
+		<p class="meta">
+			<a href="artemis-server-amd64.tar.gz" download>artemis-server-amd64.tar.gz</a> Server image, x86-64
+		</p>
+		<p class="meta">
+			<a href="artemis-server-arm64.tar.gz" download>artemis-server-arm64.tar.gz</a> Server image, ARM64
+		</p>
+		<p class="meta">
+			<a href="docker-compose.yml" download>docker-compose.yml</a> Server stack
+		</p>
+
+		<ol>
+			<li>
+				Needs Docker with Compose. Download the image for your machine and
+				<code>docker-compose.yml</code> into one directory, then load the image:
+				<pre>docker load -i artemis-server-amd64.tar.gz</pre>
+			</li>
+			<li>
+				Create the settings file next to <code>docker-compose.yml</code>:
+				<pre>cat &gt; .env &lt;&lt;EOF
+POSTGRES_PASSWORD=$(openssl rand -hex 16)
+JWT_SIGNING_KEY=$(openssl rand -base64 48)
+ARTEMIS_DATA_DIR=/opt/artemis/data
+EOF</pre>
+			</li>
+			<li>
+				Start it:
+				<pre>docker compose up -d</pre>
+			</li>
+			<li>
+				Create the first account, an admin:
+				<pre>docker compose exec server dotnet Artemis.Server.dll create-user &lt;callsign&gt; &lt;password&gt; --admin</pre>
+			</li>
+			<li>
+				Put an HTTPS reverse proxy in front of <code>http://127.0.0.1:5000</code>, passing
+				websockets through on <code>/api/sync</code>. The console is at its root, and the app
+				connects to the same address.
+			</li>
+		</ol>
 
 	</main>
 </body>
