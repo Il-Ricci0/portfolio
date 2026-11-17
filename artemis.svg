@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1007" height="211" viewBox="39 32 1007 211">
+  <title>Artemis</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path id="R" d="M296.5 223.5 L296.5 51.5 L348.5 51.5 C396.5 51.5 396.5 141.2 348.5 141.2 L296.5 141.2 M341.5 141.2 L391.5 223.5" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="T" d="M438.5 51.5 L538.5 51.5 M488.5 51.5 L488.5 223.5" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="E" d="M673.5 51.5 L585.5 51.5 L585.5 223.5 L673.5 223.5 M585.5 137.5 L659.5 137.5" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline id="M" points="720.5,223.5 720.5,51.5 784.5,159.7 848.5,51.5 848.5,223.5" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <line id="I" x1="895.5" y1="51.5" x2="895.5" y2="223.5" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="S" d="M1034.5 79.5 C1028.5 57.5 1010.5 51.5 990.5 51.5 C960.5 51.5 942.5 67.5 942.5 91.5 C942.5 121.5 972.5 131.5 990.5 137.5 C1008.5 143.5 1038.5 153.5 1038.5 183.5 C1038.5 207.5 1020.5 223.5 990.5 223.5 C970.5 223.5 952.5 217.5 946.5 195.5" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon id="A_head_half" data-name="A head half" points="163.11,72.24 166.56,62.18 173.83,66.77 175.65,60.63 184.26,71.15 237.35,201.02 251.74,188.65 243.24,241.82 199.91,209.84 218.84,208.58" fill="#ffffff"/>
+    <polygon id="Shard_left" data-name="Shard left" points="130.37,47.67 137.57,53.86 145.27,42.95 141.81,32.91" fill="#ffffff"/>
+    <polygon id="Shard_right" data-name="Shard right" points="162.6,55.15 172.03,49.15 163.21,35.47" fill="#ffffff"/>
+    <polygon id="A_tail_half" data-name="A tail half" points="122.13,57.27 124.24,73.26 134.13,67.57 134.21,80.57 93,181.37 97.47,204.8 82.33,241.83 67.1,218.32 39.75,224.42 54.89,187.4 74.49,173.81" fill="#ffffff"/>
+    <polygon id="Shard_middle" data-name="Shard middle" points="142.74,60.95 156.24,56.95 154.24,67.95 148.24,78.45" fill="#ffffff"/>
+  </g>
+</svg>
