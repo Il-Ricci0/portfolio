@@ -1,394 +1,210 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-type="software" data-radius="sharp" data-buttons="pill" data-motion>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Riccardo Roman | ilriccio.dev</title>
-	<meta name="description" content="Software developer in Vicenza, Italy.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Riccardo Roman: software developer in Vicenza</title>
+<meta name="description" content="Offline-first Android apps, custom WordPress themes and 3D-printed parts, built by Riccardo Roman.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ilriccio.dev/">
+<meta property="og:title" content="Riccardo Roman: software developer in Vicenza">
+<meta property="og:description" content="Offline-first Android apps, custom WordPress themes and 3D-printed parts.">
+<meta property="og:image" content="https://ilriccio.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ilriccio.dev/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0d0b08">
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
 
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-	<link rel="icon" href="/favicon.ico" sizes="any">
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<style>
+:root {
+  --p-bg: #0d0b08; --p-surface: #16130e; --p-ink: #d8cbb0; --p-muted: #8a7f66;
+  --p-accent: #ffb000; --p-accent-ink: #0d0b08; --p-action: #ffb000; --p-action-ink: #0d0b08;
+  --p-inv-bg: #d8cbb0; --p-inv-surface: #c8bba2; --p-inv-ink: #0d0b08; --p-inv-muted: #4b453b;
+  --p-inv-accent: #0d0b08; --p-inv-accent-ink: #d8cbb0; --p-inv-action: #0d0b08; --p-inv-action-ink: #d8cbb0;
+  --font-display: "Pixelify Sans", ui-monospace, monospace;
+  --font-text: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 500;
+  --display-tracking: 0;
+  --display-tracking-xl: 0;
+  --ly-scale: 0.86;
+  --ground-bg: #16130e; --ground-surface: #211b13; --ground-ink: #d8cbb0; --ground-muted: #8a7f66; --ground-accent: #ffb000;
+}
+</style>
+<link rel="stylesheet" href="pause.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/iris-opens/moment.js">
+<style>
+  /* the CRT scanlines over the whole page */
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+    background: repeating-linear-gradient(to bottom, transparent 0 2px, rgb(0 0 0 / .22) 3px 4px);
+  }
+  body { font-variant-ligatures: no-common-ligatures; }
+  h1 { color: var(--p-accent); text-shadow: 0 0 12px rgb(255 176 0 / .35); }
+  .cursor {
+    display: inline-block; width: .5em; height: .9em; margin-left: .12em; vertical-align: -.05em;
+    background: currentColor; animation: blink 1.1s steps(1) 3;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
 
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://ilriccio.dev/">
-	<meta property="og:title" content="Riccardo Roman | ilriccio.dev">
-	<meta property="og:description" content="Software developer in Vicenza, Italy.">
-	<meta property="og:image" content="https://ilriccio.dev/og.png">
-	<meta property="og:image:width" content="1200">
-	<meta property="og:image:height" content="630">
-	<meta name="twitter:card" content="summary_large_image">
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-
-	<style>
-		:root {
-			--bg:      #0d0b08;
-			--panel:   #16130e;
-			--fg:      #d8cbb0;
-			--dim:     #7d7259;
-			--amber:   #ffb000;
-			--border:  #3a3428;
-		}
-
-		* { box-sizing: border-box; }
-
-		body {
-			margin: 0;
-			min-height: 100vh;
-			font-family: "Pixelify Sans", monospace;
-			font-weight: 500;
-			font-size: 18px;
-			line-height: 1.7;
-			letter-spacing: 0.02em;
-			background: var(--bg);
-			color: var(--fg);
-		}
-
-		body::after {
-			content: "";
-			position: fixed;
-			inset: 0;
-			pointer-events: none;
-			z-index: 10;
-			background: repeating-linear-gradient(
-				to bottom,
-				rgba(0,0,0,0) 0px,
-				rgba(0,0,0,0) 2px,
-				rgba(0,0,0,0.22) 3px,
-				rgba(0,0,0,0.22) 4px
-			);
-		}
-
-		#main-content {
-			max-width: 900px;
-			margin: 0 auto;
-			padding: 4rem 1.5rem 6rem;
-		}
-
-		h1 {
-			font-size: 2.6rem;
-			font-weight: 700;
-			line-height: 1.2;
-			margin: 0;
-			color: var(--amber);
-			text-shadow: 0 0 12px rgba(255,176,0,0.35);
-		}
-
-		.role {
-			display: block;
-			color: var(--dim);
-			margin-bottom: 2.5rem;
-		}
-
-		.cursor {
-			display: inline-block;
-			width: 0.55em;
-			height: 1em;
-			margin-left: 0.15em;
-			vertical-align: text-bottom;
-			background: var(--amber);
-			animation: blink 1.1s steps(1) infinite;
-		}
-
-		@keyframes blink { 50% { opacity: 0; } }
-
-		.meta {
-			margin: 0.35rem 0;
-			color: var(--dim);
-		}
-
-		a {
-			color: var(--amber);
-			text-decoration: none;
-			border-bottom: 1px dotted var(--amber);
-		}
-		a:hover,
-		a:focus-visible {
-			background: var(--amber);
-			color: var(--bg);
-			border-bottom-color: transparent;
-			outline: none;
-		}
-
-		h2 {
-			font-size: 1.1rem;
-			font-weight: 600;
-			margin: 3.5rem 0 1.5rem;
-			padding-bottom: 0.6rem;
-			border-bottom: 1px solid var(--border);
-			color: var(--fg);
-		}
-		h2::before {
-			content: "$ ";
-			color: var(--amber);
-		}
-
-		.project-carousel {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 1.5rem;
-		}
-
-		.project {
-			display: flex;
-			flex-direction: column;
-			flex: 1 1 280px;
-			min-width: 0;
-		}
-
-		.project-card {
-			position: relative;
-			display: flex;
-			align-items: flex-end;
-			height: 150px;
-			padding: 0.6rem;
-			border: 2px solid var(--border);
-			background-color: var(--panel);
-			background-size: auto 100%;
-			background-repeat: no-repeat;
-			background-position: center;
-			image-rendering: pixelated;
-		}
-
-		.project-card canvas {
-			position: absolute;
-			inset: 0;
-			width: 100%;
-			height: 100%;
-			image-rendering: pixelated;
-		}
-
-		.project-title {
-			position: relative;
-			padding: 0.15rem 0.5rem;
-			background: rgba(13,11,8,0.85);
-			color: var(--amber);
-			font-weight: 600;
-		}
-
-		.project p {
-			margin: 0.9rem 0 0;
-			font-size: 0.9rem;
-			line-height: 1.65;
-			color: var(--dim);
-			overflow-wrap: break-word;
-		}
-
-		#project-artemis {
-			background-image: url(artemis.svg);
-			background-size: min(80%, 420px) auto;
-			background-position: center 30%;
-			image-rendering: auto;
-		}
-		#project-basoftair { background-image: url(basoftair.png); }
-
-		@media (prefers-reduced-motion: reduce) {
-			.cursor { animation: none; }
-		}
-	</style>
+  /* the dithered STL renders: the hero's product stage and the print cards */
+  .hero--product .hero__stage > [data-product] { inset: 0; }
+  main > .hero:has(canvas[data-runner]) { position: relative; }
+  .hero > .hero__stage:has(canvas[data-runner]) { position: absolute; inset: 0; margin: 0; z-index: 0; min-height: 0; border-radius: 0; background: none; }
+  canvas[data-runner] { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+  canvas[data-stl] { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+  #projects .panel { --p-h: 400px; height: var(--p-h); flex: none; background: var(--ground-bg); }
+  .menu-mark { position: absolute; inset: 0; margin: auto; width: 70%; height: auto; }
+  @media (max-width: 1279px) and (min-width: 1024px) { #projects .panel { --p-h: 280px; } }
+  @media (max-width: 639px) { #projects .panel { --p-h: 170px; } }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  footer.closing { height: auto; }
+  #projects { height: auto; }
+  #projects > .wrap { gap: var(--s-7); }
+  @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+</style>
 </head>
 <body>
-	<main id="main-content">
+<!-- type: software (a developer's own software and printed hardware; dark tech page)
+     deal: hero product (the hedgehog runner on the stage), nav nav-mega, close none (removed at the client's ask), footer footer-dark,
+     rhythm surface-pairs (#projects on .ground-surface), buttons pill, mark none (the name alone, as the client asked)
+     palette: the client's own (amber on near-black, start.mjs brand); type: Pixelify Sans display, IBM Plex Mono text
+     moments: iris-opens on #projects (the page's one ground change; counter-rolls re-dealt: its strips clip the pixel face) -->
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="#top">Riccardo Roman</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item">
+        <a class="nav__link" href="#projects">Projects <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <div class="menu-col span-3">
+              <p class="t-label">Software</p>
+              <a href="/projects/artemis/">Artemis<span>Team map over LoRa mesh</span></a>
+              <a href="https://basoftair.it">basoftair.it<span>Custom WordPress theme</span></a>
+            </div>
+            <div class="menu-col span-3">
+              <p class="t-label">3D prints</p>
+              <a href="/projects/frenzy-protector/">Frenzy protector<span>Kill flash for a red dot</span></a>
+              <a href="/projects/rugged-mesh-enclosure/">ruggedMeshEnclosure<span>Case for a Meshtastic node</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="https://github.com/Il-Ricci0">Visit my GitHub</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
 
-		<h1>Riccardo Roman<span class="cursor" aria-hidden="true"></span></h1>
-		<span class="role">Software Developer</span>
+<main id="top">
+  <section class="hero hero--product" data-enter aria-labelledby="hero-h">
+    <div class="hero__stage">
+      <div class="frame" data-product data-product-place="stage" role="img" aria-label="A pixel hedgehog running an endless level, curling into a ball to jump over mushrooms, rocks and stumps">
+        <canvas data-runner></canvas>
+        <button class="loop-pause" type="button" aria-pressed="false" aria-label="Pause the hedgehog run"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2h3v10H3zM8 2h3v10H8z"/></svg></button>
+      </div>
+    </div>
+    <div class="wrap"><div class="hero-text hero__in">
+      <div class="hero__head">
+        <div>
+          <h1 id="hero-h">Riccardo Roman, developer in Vicenza<span class="cursor" aria-hidden="true"></span></h1>
+          <p class="hero__lead">I like building things end to end, from the software to the prototype. Developer at <a href="https://www.touchmultimedia.com">Touch Multimedia</a>.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="https://github.com/Il-Ricci0">Visit my GitHub<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn btn--secondary" href="#projects">See the projects</a>
+        </div>
+      </div>
+    </div></div>
+  </section>
 
-		<p class="meta">
-			<a href="https://github.com/Il-Ricci0">Il-Ricci0</a> on GitHub
-		</p>
-		<p class="meta">
-			Currently at <a href="https://www.touchmultimedia.com">Touch Multimedia Srl</a>
-		</p>
+  <section class="section ground-surface" id="projects" data-moment="iris-opens" data-moment-opts='{"from": "base"}' aria-labelledby="projects-h">
+    <div class="wrap">
+      <div class="group">
+        <div class="section-head">
+          <h2 id="projects-h">My projects</h2>
+        </div>
+        <div class="grid">
+        <a class="card card--row card--open span-6" href="/projects/artemis/">
+          <h3>Artemis</h3>
+          <p>Offline-first tactical awareness over a Meshtastic mesh: Android client, self-hostable backend and operator console.</p>
+          <div class="panel"><img class="menu-mark" src="artemis.svg" alt="" aria-hidden="true"></div>
+        </a>
+        <a class="card card--row card--open span-6" href="https://basoftair.it">
+          <h3>basoftair.it</h3>
+          <p>A WordPress theme written from scratch for Broken Arrow, an airsoft team in Vicenza since 2006.</p>
+          <div class="panel"><img class="frame__img" src="img/basoftair-site.jpg" alt="" aria-hidden="true" loading="lazy" width="1440" height="900" style="object-position: top"></div>
+        </a>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card card--row card--open span-6" href="/projects/frenzy-protector/">
+          <h3>Frenzy protector</h3>
+          <p>Fits the Vector Optics Frenzy Plus 1x31x26 red dot. Designed in Fusion.</p>
+          <div class="panel"><canvas data-stl="projects/frenzy-protector/frenzy-protector.stl" aria-hidden="true"></canvas></div>
+        </a>
+        <a class="card card--row card--open span-6" href="/projects/rugged-mesh-enclosure/">
+          <h3>ruggedMeshEnclosure</h3>
+          <p>Parametric OpenSCAD case for a Meshtastic node on the RAK19007 board, with heat-set inserts.</p>
+          <div class="panel"><canvas data-stl="projects/rugged-mesh-enclosure/bottom-shell.stl" aria-hidden="true"></canvas></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
 
-		<h2>ls ~/projects</h2>
+<footer class="footer closing footer--dark ground-inverse" id="contact" aria-label="Contact">
+  <div class="wrap">
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-8 stack-4">
+          <a class="nav__logo" href="#top">Riccardo Roman</a>
+          <p class="footer__lede">Software developer in Vicenza, Italy.</p>
+        </div>
+        <div class="span-2 footer__col"><h3>Software</h3><ul><li><a href="/projects/artemis/">Artemis</a></li><li><a href="https://basoftair.it">basoftair.it</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Prints</h3><ul><li><a href="/projects/frenzy-protector/">Frenzy protector</a></li><li><a href="/projects/rugged-mesh-enclosure/">Enclosure</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Riccardo Roman</span>
+      </div>
+    </div>
+  </div>
+</footer>
 
-		<div class="project-carousel">
+<nav class="actionbar" aria-label="Quick actions">
+  <a class="btn btn--primary" href="https://github.com/Il-Ricci0">Visit my GitHub</a>
+</nav>
 
-			<article class="project">
-				<div class="project-card" id="project-artemis">
-					<a class="project-title" href="/projects/artemis/">Artemis</a>
-				</div>
-				<p>
-					Offline-first tactical awareness system over Meshtastic LoRa mesh.
-					Native Android client, self-hostable backend and operator console.
-				</p>
-			</article>
-
-			<article class="project">
-				<div class="project-card" id="project-basoftair">
-					<span class="project-title">basoftair.it</span>
-				</div>
-				<p>
-					Fully custom WordPress theme for the Broken Arrow airsoft club.
-				</p>
-			</article>
-
-			<article class="project">
-				<div class="project-card">
-					<canvas data-stl="frenzy-protector.stl" aria-hidden="true"></canvas>
-					<a class="project-title" href="/projects/frenzy-protector/">Frenzy protector</a>
-				</div>
-				<p>
-					Kill flash for the Vector Optics Frenzy Plus 1x31x26 red dot,
-					designed in Fusion.
-				</p>
-			</article>
-
-			<article class="project">
-				<div class="project-card">
-					<canvas data-stl="rugged-mesh-enclosure.stl" aria-hidden="true"></canvas>
-					<a class="project-title" href="/projects/rugged-mesh-enclosure/">ruggedMeshEnclosure</a>
-				</div>
-				<p>
-					Parametric OpenSCAD enclosure for a Meshtastic node on the RAK19007
-					WisBlock base board, with battery holder, heat-set inserts, and SMA,
-					USB-C and button cutouts.
-				</p>
-			</article>
-
-		</div>
-
-	</main>
-
-	<script>
-		const PIXEL = 2;
-		const TILT = 0.45;
-		const SHADES = [[58, 42, 0], [122, 85, 0], [192, 132, 0], [255, 176, 0]];
-		const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map(v => v / 16);
-		const LIGHT = normalize([-0.4, 0.6, 0.7]);
-
-		function normalize(v) {
-			const l = Math.hypot(...v) || 1;
-			return v.map(c => c / l);
-		}
-
-		function parseStl(buf) {
-			const view = new DataView(buf);
-			const count = buf.byteLength >= 84 ? view.getUint32(80, true) : 0;
-			const tris = [];
-			if (84 + count * 50 === buf.byteLength) {
-				for (let i = 0; i < count; i++) {
-					const o = 84 + i * 50 + 12;
-					const t = [];
-					for (let k = 0; k < 9; k++) t.push(view.getFloat32(o + k * 4, true));
-					tris.push(t);
-				}
-			} else {
-				const verts = new TextDecoder().decode(buf).match(/vertex(\s+\S+){3}/g) || [];
-				for (let i = 0; i + 2 < verts.length; i += 3) {
-					tris.push(verts.slice(i, i + 3).flatMap(v => v.trim().split(/\s+/).slice(1).map(Number)));
-				}
-			}
-			return tris;
-		}
-
-		function prepare(tris) {
-			const min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
-			for (const t of tris) for (let k = 0; k < 9; k++) {
-				min[k % 3] = Math.min(min[k % 3], t[k]);
-				max[k % 3] = Math.max(max[k % 3], t[k]);
-			}
-			const c = min.map((m, a) => (m + max[a]) / 2);
-			let r = 0;
-			for (const t of tris) for (let k = 0; k < 9; k += 3) {
-				r = Math.max(r, Math.hypot(t[k] - c[0], t[k + 1] - c[1], t[k + 2] - c[2]));
-			}
-			return tris.map(t => {
-				const p = t.map((v, k) => (v - c[k % 3]) / r);
-				const u = [p[3] - p[0], p[4] - p[1], p[5] - p[2]];
-				const v = [p[6] - p[0], p[7] - p[1], p[8] - p[2]];
-				const n = normalize([u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]]);
-				return { p, n };
-			});
-		}
-
-		// STL is Z-up; the view spins around Z and looks slightly down, giving [right, up, toward viewer].
-		function toView(x, y, z, ca, sa) {
-			const rx = x * ca - y * sa, ry = x * sa + y * ca;
-			const ct = Math.cos(TILT), st = Math.sin(TILT);
-			return [rx, z * ct + ry * st, z * st - ry * ct];
-		}
-
-		function render(canvas, model, angle) {
-			const w = Math.max(1, Math.round(canvas.clientWidth / PIXEL));
-			const h = Math.max(1, Math.round(canvas.clientHeight / PIXEL));
-			if (canvas.width !== w || canvas.height !== h) {
-				canvas.width = w;
-				canvas.height = h;
-			}
-			const ctx = canvas.getContext('2d');
-			const img = ctx.createImageData(w, h);
-			const depth = new Float32Array(w * h).fill(-Infinity);
-			const scale = Math.min(w, h) * 0.48;
-			const ca = Math.cos(angle), sa = Math.sin(angle);
-
-			for (const { p, n } of model) {
-				const vn = toView(n[0], n[1], n[2], ca, sa);
-				const facing = vn[2] < 0 ? -1 : 1;
-				const light = 0.2 + 0.8 * Math.max(0, facing * (vn[0] * LIGHT[0] + vn[1] * LIGHT[1] + vn[2] * LIGHT[2]));
-				const s = [];
-				for (let k = 0; k < 9; k += 3) {
-					const v = toView(p[k], p[k + 1], p[k + 2], ca, sa);
-					s.push(w / 2 + v[0] * scale, h / 2 - v[1] * scale, v[2]);
-				}
-				const [x0, y0, z0, x1, y1, z1, x2, y2, z2] = s;
-				const area = (x1 - x0) * (y2 - y0) - (x2 - x0) * (y1 - y0);
-				if (area === 0) continue;
-				const minX = Math.max(0, Math.floor(Math.min(x0, x1, x2)));
-				const maxX = Math.min(w - 1, Math.ceil(Math.max(x0, x1, x2)));
-				const minY = Math.max(0, Math.floor(Math.min(y0, y1, y2)));
-				const maxY = Math.min(h - 1, Math.ceil(Math.max(y0, y1, y2)));
-				for (let y = minY; y <= maxY; y++) {
-					for (let x = minX; x <= maxX; x++) {
-						const px = x + 0.5, py = y + 0.5;
-						const a = ((x1 - px) * (y2 - py) - (x2 - px) * (y1 - py)) / area;
-						const b = ((x2 - px) * (y0 - py) - (x0 - px) * (y2 - py)) / area;
-						const c = 1 - a - b;
-						if (a < 0 || b < 0 || c < 0) continue;
-						const z = a * z0 + b * z1 + c * z2;
-						const i = y * w + x;
-						if (z <= depth[i]) continue;
-						depth[i] = z;
-						const level = Math.min(SHADES.length - 1, Math.floor(light * (SHADES.length - 1) + BAYER[(y % 4) * 4 + (x % 4)]));
-						const [r, g, bl] = SHADES[level];
-						img.data[i * 4] = r;
-						img.data[i * 4 + 1] = g;
-						img.data[i * 4 + 2] = bl;
-						img.data[i * 4 + 3] = 255;
-					}
-				}
-			}
-			ctx.putImageData(img, 0, 0);
-		}
-
-		const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-		for (const canvas of document.querySelectorAll('canvas[data-stl]')) {
-			fetch(canvas.dataset.stl)
-				.then(r => r.arrayBuffer())
-				.then(buf => {
-					const model = prepare(parseStl(buf));
-					let visible = false, frame = 0;
-					const tick = t => {
-						render(canvas, model, t * 0.0006);
-						frame = visible ? requestAnimationFrame(tick) : 0;
-					};
-					if (still) {
-						const draw = () => render(canvas, model, 0.6);
-						draw();
-						addEventListener('resize', draw);
-						return;
-					}
-					new IntersectionObserver(([entry]) => {
-						visible = entry.isIntersecting;
-						if (visible && !frame) frame = requestAnimationFrame(tick);
-					}).observe(canvas);
-				});
-		}
-	</script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script src="stl.js"></script>
+<script src="runner.js"></script>
 </body>
 </html>
