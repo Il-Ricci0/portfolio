@@ -31,7 +31,8 @@
 		return tris;
 	}
 
-	function prepare(tris) {
+	function prepare(tris, flip) {
+		if (flip) tris = tris.map(t => t.map((v, k) => k % 3 ? -v : v));
 		const min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
 		for (const t of tris) for (let k = 0; k < 9; k++) {
 			min[k % 3] = Math.min(min[k % 3], t[k]);
@@ -146,6 +147,6 @@
 	for (const canvas of document.querySelectorAll('canvas[data-stl]')) {
 		fetch(canvas.dataset.stl)
 			.then(r => r.arrayBuffer())
-			.then(buf => mount(canvas, prepare(parseStl(buf))));
+			.then(buf => mount(canvas, prepare(parseStl(buf), 'flip' in canvas.dataset)));
 	}
 })();
