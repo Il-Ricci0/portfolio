@@ -713,11 +713,14 @@ html:not([data-tone="dark"]) :is(.frame--cta, .frame--lit, .footer--statement) {
 
 @media (max-width: 1023px) {
   .nav__links, .nav__actions { display: none; }
-  /* the menu button takes the secondary button's look on a 44px tap area */
+  /* the menu button is a bare amber pixel glyph like the scenes' pause button, on a 44px tap area */
   .nav__toggle {
-    display: inline-grid; place-items: center; margin-left: auto; width: 44px; height: 44px; border-radius: var(--r-btn);
-    border: 1px solid var(--line-strong); background: transparent; color: var(--ink); cursor: pointer; flex: none;
+    display: inline-grid; place-items: center; margin-left: auto; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 0;
+    background: none; color: #c08400; cursor: pointer; flex: none;
   }
+  .nav__toggle:hover, .nav__toggle:focus-visible { color: #ffb000; }
+  .nav__toggle:focus-visible { outline: 2px solid #ffb000; outline-offset: 0; }
+  .nav__toggle svg { width: 21px; height: 21px; fill: currentColor; shape-rendering: crispEdges; }
   .nav.is-open .nav__links {
     display: flex; flex-direction: column; position: fixed; top: var(--nav); left: 0; right: 0; bottom: 0;
     padding: var(--s-4) var(--gut) calc(var(--btn-h) * 2 + 56px); background: var(--bg); overflow-y: auto; gap: 0;

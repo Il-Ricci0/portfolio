@@ -2,8 +2,8 @@
 	const nav = document.querySelector('.nav');
 	const toggle = nav && nav.querySelector('.nav__toggle');
 	if (!toggle) return;
-	const bars = '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
-	const cross = '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+	const bars = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1 3h12v2H1zM1 9h12v2H1z"/></svg>';
+	const cross = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2h2v2H2zM4 4h2v2H4zM6 6h2v2H6zM8 8h2v2H8zM10 10h2v2h-2zM10 2h2v2h-2zM8 4h2v2H8zM4 8h2v2H4zM2 10h2v2H2z"/></svg>';
 	const set = open => {
 		nav.classList.toggle('is-open', open);
 		document.body.classList.toggle('nav-locked', open);

@@ -62,9 +62,12 @@
 	.nav__wrap { gap: 12px; }
 	.nav__links { display: none; }
 	.nav__toggle {
-		display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 999px; flex: none;
-		border: 1px solid color-mix(in oklab, var(--nav-ink) 24%, transparent); background: transparent; color: var(--nav-ink); cursor: pointer;
+		display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 0; flex: none;
+		background: none; color: #c08400; cursor: pointer;
 	}
+	.nav__toggle:hover, .nav__toggle:focus-visible { color: var(--nav-action); }
+	.nav .nav__toggle:focus-visible { outline-offset: 0; }
+	.nav__toggle svg { width: 21px; height: 21px; fill: currentColor; shape-rendering: crispEdges; }
 	.nav.is-open .nav__links {
 		display: flex; flex-direction: column; position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
 		padding: 16px var(--nav-gut); background: var(--nav-bg); overflow-y: auto; gap: 0;
