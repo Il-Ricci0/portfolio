@@ -1,0 +1,40 @@
+/* The pause and play control of the pixel scenes, drawn like the scenes themselves: a bare amber pixel glyph in the bottom right corner of the page. The doubled class outweighs the design kit's round disc. */
+button.loop-pause.loop-pause {
+	position: absolute;
+	right: 16px;
+	bottom: 16px;
+	z-index: 6;
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: none;
+	box-shadow: none;
+	color: #c08400;
+	opacity: 1;
+	cursor: pointer;
+}
+button.loop-pause.loop-pause:hover,
+button.loop-pause.loop-pause:focus-visible {
+	color: #ffb000;
+	border: 0;
+	outline: none;
+}
+button.loop-pause.loop-pause:focus-visible {
+	outline: 2px solid #ffb000;
+	outline-offset: 0;
+}
+button.loop-pause.loop-pause svg {
+	width: 21px;
+	height: 21px;
+	margin: 0;
+	fill: currentColor;
+	shape-rendering: crispEdges;
+}
+@media (prefers-reduced-motion: reduce) {
+	button.loop-pause.loop-pause { display: none; }
+}
