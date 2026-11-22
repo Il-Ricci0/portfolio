@@ -1,0 +1,85 @@
+/* The homepage's top bar for pages that do not load the design kit; it matches assets/system.css .nav */
+:root {
+	--nav-h: 72px;
+	--nav-gut: 80px;
+	--nav-bg: #0d0b08;
+	--nav-ink: #d8cbb0;
+	--nav-muted: #8a7f66;
+	--nav-action: #ffb000;
+	--nav-line: color-mix(in oklab, #d8cbb0 12%, transparent);
+	--nav-ease: cubic-bezier(.22, 1, .36, 1);
+}
+@media (max-width: 1023px) { :root { --nav-gut: 48px; } }
+@media (max-width: 639px) { :root { --nav-h: 56px; --nav-gut: 24px; } }
+
+.nav {
+	position: fixed; inset: 0 0 auto 0; z-index: 9; height: var(--nav-h);
+	background: var(--nav-bg); color: var(--nav-ink); border-bottom: 1px solid var(--nav-line);
+	font: 500 15px/1.5 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: 0;
+}
+.nav a, .nav a:hover, .nav a:focus-visible { border-bottom: 0; background: none; color: inherit; text-decoration: none; }
+.nav__wrap { width: min(100% - 2 * var(--nav-gut), 1280px); margin-inline: auto; height: 100%; display: flex; align-items: center; gap: 64px; }
+.nav__logo { font: 500 22px/1 "Pixelify Sans", monospace; letter-spacing: -0.02em; flex: none; white-space: nowrap; }
+.nav__links { display: flex; align-self: stretch; gap: 4px; flex: 1; min-width: 0; margin: 0; padding: 0; list-style: none; }
+.nav__item { display: flex; align-items: center; height: 100%; margin: 0; padding: 0; }
+.nav__link { position: relative; display: inline-flex; align-items: center; gap: 4px; height: 36px; padding: 0 12px; white-space: nowrap; }
+.nav__link::before {
+	content: ""; position: absolute; left: 12px; right: 12px; bottom: -2px; height: 2px; border-radius: 2px; background: currentColor;
+	transform: scaleX(0); transform-origin: right; transition: transform 200ms var(--nav-ease);
+}
+.nav__link:hover::before, .nav__link:focus-visible::before, .nav__item:hover > .nav__link::before { transform: scaleX(1); transform-origin: left; }
+.nav__link[aria-current="page"]::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: -2px; height: 2px; border-radius: 2px; background: currentColor; }
+.nav__link .chev { width: 12px; height: 12px; opacity: .6; transition: transform 200ms var(--nav-ease); }
+.nav__menu {
+	position: absolute; left: 0; right: 0; top: 100%; background: var(--nav-bg);
+	border-top: 1px solid var(--nav-line); border-bottom: 1px solid var(--nav-line); padding: 48px 0 64px;
+	opacity: 0; visibility: hidden; transform: translateY(-6px);
+	transition: opacity 120ms var(--nav-ease), transform 120ms var(--nav-ease), visibility 0s linear 120ms;
+}
+.nav__menu-cols { width: min(100% - 2 * var(--nav-gut), 1280px); margin-inline: auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.menu-col { display: grid; gap: 8px; align-content: start; }
+.menu-col p { margin: 0 0 8px; color: var(--nav-muted); font-size: 13px; }
+.nav .menu-col a { display: grid; gap: 4px; padding: 8px 0; }
+.nav .menu-col a span { font-weight: 400; color: var(--nav-muted); font-size: 14px; }
+.nav .menu-col a:hover { color: var(--nav-action); }
+@media (min-width: 1024px) {
+	.nav__item:hover > .nav__menu, .nav__item:focus-within > .nav__menu {
+		opacity: 1; visibility: visible; transform: none; transition-duration: 200ms, 200ms, 0s; transition-delay: 150ms, 150ms, 150ms;
+	}
+	.nav__item:hover > .nav__link .chev, .nav__item:focus-within > .nav__link .chev { transform: rotate(180deg); }
+}
+.nav__actions { display: flex; align-items: center; gap: 16px; flex: none; margin-left: auto; }
+.nav .nav__btn {
+	display: inline-flex; align-items: center; height: 44px; padding: 0 24px; border-radius: 999px;
+	background: var(--nav-action); color: var(--nav-bg); font-size: 15px; transition: background-color 200ms var(--nav-ease);
+}
+.nav .nav__btn::after { content: "›"; margin-left: 8px; font-size: 18px; line-height: 1; }
+.nav .nav__btn:hover, .nav .nav__btn:focus-visible { background: color-mix(in oklab, var(--nav-action) 86%, var(--nav-ink)); color: var(--nav-bg); }
+.nav :focus-visible { outline: 2px solid var(--nav-action); outline-offset: 2px; }
+.nav__toggle { display: none; }
+
+@media (max-width: 1023px) {
+	.nav__wrap { gap: 12px; }
+	.nav__links { display: none; }
+	.nav__toggle {
+		display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 999px; flex: none;
+		border: 1px solid color-mix(in oklab, var(--nav-ink) 24%, transparent); background: transparent; color: var(--nav-ink); cursor: pointer;
+	}
+	.nav.is-open .nav__links {
+		display: flex; flex-direction: column; position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
+		padding: 16px var(--nav-gut); background: var(--nav-bg); overflow-y: auto; gap: 0;
+	}
+	.nav.is-open .nav__item { display: block; height: auto; border-bottom: 1px solid var(--nav-line); }
+	.nav.is-open .nav__link { height: 56px; padding: 0; font-size: 20px; }
+	.nav.is-open .nav__link::before, .nav.is-open .nav__link .chev, .nav.is-open .nav__menu { display: none; }
+	.nav.is-open .nav__link[aria-current="page"]::after { left: 0; right: auto; width: 24px; bottom: 10px; }
+	body.nav-locked { overflow: hidden; }
+}
+@media (max-width: 639px) {
+	.nav__logo { font-size: clamp(16px, 4.6vw, 20px); }
+	.nav:not(.is-open) .nav__btn { display: none; }
+	.nav.is-open .nav__btn { position: fixed; left: var(--nav-gut); right: var(--nav-gut); bottom: 24px; height: 48px; justify-content: center; font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.nav *, .nav *::before { transition: none !important; }
+}

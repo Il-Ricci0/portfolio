@@ -22,7 +22,7 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 	<style>
 		:root {
@@ -66,7 +66,7 @@
 		#main-content {
 			max-width: 900px;
 			margin: 0 auto;
-			padding: 4rem 1.5rem 6rem;
+			padding: calc(72px + 4rem) 1.5rem 6rem;
 		}
 
 		.meta {
@@ -116,14 +116,80 @@
 			font-size: 0.85rem;
 			color: var(--fg);
 		}
+		html { overflow-x: clip; }
+		.print-hero {
+			position: relative;
+			min-height: calc(min(75vh, 680px) - 4rem);
+		}
+		.print-hero > :not(.print-stage) {
+			position: relative;
+			z-index: 1;
+		}
+		.print-hero h1 {
+			overflow-wrap: anywhere;
+			text-shadow: 0 0 12px rgba(255,176,0,0.35), 0 0 2px var(--bg), 0 0 6px var(--bg), 0 0 14px var(--bg);
+		}
+		.print-stage {
+			position: absolute;
+			top: -4rem;
+			left: calc(50% - 50vw);
+			width: 100vw;
+			height: min(75vh, 680px);
+		}
+		.print-stage canvas {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			image-rendering: pixelated;
+		}
 	</style>
+	<link rel="stylesheet" href="/nav.css">
+	<link rel="stylesheet" href="/pause.css">
 </head>
 <body>
+	<header class="nav">
+		<div class="nav__wrap">
+			<a class="nav__logo" href="/">Riccardo Roman</a>
+			<ul class="nav__links">
+				<li class="nav__item">
+					<a class="nav__link" href="/#projects">Projects <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+					<div class="nav__menu">
+						<div class="nav__menu-cols">
+							<div class="menu-col">
+								<p>Software</p>
+								<a href="/projects/artemis/">Artemis<span>Team map over LoRa mesh</span></a>
+								<a href="https://basoftair.it">basoftair.it<span>Custom WordPress theme</span></a>
+							</div>
+							<div class="menu-col">
+								<p>3D prints</p>
+								<a href="/projects/frenzy-protector/">Frenzy protector<span>Kill flash for a red dot</span></a>
+								<a href="/projects/rugged-mesh-enclosure/">ruggedMeshEnclosure<span>Case for a Meshtastic node</span></a>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="nav__actions">
+				<a class="nav__btn" href="https://github.com/Il-Ricci0">Visit my GitHub</a>
+				<button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+					<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+				</button>
+			</div>
+		</div>
+	</header>
 	<main id="main-content">
 
-		<p class="meta"><a href="/">cd ~</a></p>
+		<div class="print-hero">
+			<div class="print-stage" role="img" aria-label="The Frenzy protector kill flash turning slowly, drawn in amber pixels">
+				<canvas data-stl="frenzy-protector.stl" data-scale="0.52" data-x="0.68" data-y="0.6"></canvas>
+				<button class="loop-pause" type="button" aria-pressed="false" aria-label="Pause the turning model"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2h3v10H3zM8 2h3v10H8z"/></svg></button>
+			</div>
 
-		<h1>Frenzy protector</h1>
+			<p class="meta"><a href="/">cd ~</a></p>
+
+			<h1>Frenzy protector</h1>
+		</div>
 
 		<h2>Download</h2>
 
@@ -140,5 +206,7 @@
 			<a href="frenzy-protector.stl" download>frenzy-protector.stl</a> Model only, for any slicer
 		</p>
 	</main>
+	<script src="/nav.js"></script>
+	<script src="/stl.js"></script>
 </body>
 </html>
